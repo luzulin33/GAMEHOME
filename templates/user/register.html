@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap-grid.css" rel="stylesheet">
+</head>
+<body>
+<form class="form-inline">
+    {% csrf_token %}
+    {% for field in userForm %}
+
+        <div class="form-group">
+            {{ field.errors }}
+            <label for="exampleInputName2">{{ field.label_tag }}</label>
+            {{ field }}
+            {% if field.help_text %}
+                <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-default">Send invitation</button>
+</form>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/core.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.bundle.js"></script>
+</html>

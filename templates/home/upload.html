@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if not msg %}
+    <h1>请选择需要上传的文件</h1>
+    {% else %}
+    {{ msg }}
+{% endif %}
+
+<form action="{% url 'home:upload' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="upload">选择上传文件
+    <input type="submit" value="上传">
+</form>
+
+
+</body>
+</html>
